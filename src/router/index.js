@@ -5,6 +5,7 @@ import User from '@/components/User'
 import UserPosts from '@/components/UserPosts'
 import UserProfile from '@/components/UserProfile'
 import Cart from '@/components/Cart'
+import Address from '@/components/Address'
 
 Vue.use(Router)
 
@@ -17,8 +18,13 @@ export default new Router({
     },
     {
       path:'/user',
-      name:"User",
+      name:'User',
       component:User
+    },
+    {
+      path:'/address',
+      name:'Address',
+      component:Address
     },
     {
       path:'/cart',

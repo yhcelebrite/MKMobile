@@ -1,6 +1,6 @@
 <template>
  <div class="checkout">
-      <div id="cartapp">
+      <div id="app">
         <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs>
             <symbol id="icon-add" viewBox="0 0 32 32">
@@ -80,7 +80,7 @@
                       </div>
                     </div>
                     <div class="cart-tab-4">
-                      <div class="item-price-total">{{ item.productPrice*item.productQuantity | money('元')}}</div>
+                      <div class="item-price-total">{{ item.productPrice*item.productQuantity }}</div>
                     </div>
                     <div class="cart-tab-5">
                       <div class="cart-item-operation">
@@ -113,10 +113,10 @@
               </div>
               <div class="cart-foot-r">
                 <div class="item-total">
-                  Item total: <span class="total-price">{{totalMoney | money('元')}}</span>
+                  Item total: <span class="total-price">{{totalMoney}}</span>
                 </div>
                 <div class="next-btn-wrap">
-                  <a href="address.html" class="btn btn--red" style="width: 200px">结账</a>
+                  <a href="/#/address" class="btn btn--red" style="width: 200px">结账</a>
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@
               </div>
               <div class="btn-wrap col-2">
                 <button class="btn btn--m" id="btnModalConfirm" @click="delProduct">Yes</button>
-                <button class="btn btn--m btn--red" id="btnModalCancel" @click="delFlag=false">>No</button>
+                <button class="btn btn--m btn--red" id="btnModalCancel" @click="delFlag=false">No</button>
               </div>
             </div>
           </div>
@@ -146,20 +146,21 @@
     </div>
 </template>
 <script>
-  new Vue({
-    el: '#cartapp',
-    data: {
-      totalMoney: 0,
-      productList: [],
-      checkAllFlag: false,
-      delFlag: false,
-      curProduct: ''
+
+  export default{
+    data () {
+      return {
+        totalMoney:0,
+        productList:[],
+        checkAllFlag:false,
+        delFlag:false,
+        curProduct:''
+      }
     },
     filters: {
       formatMoney: function(value) {
         return "¥" + value.toFixed(2);
       }
-
     },
     mounted: function() {
       this.$nextTick(function() {
@@ -169,8 +170,9 @@
     methods: {
         cartView: function() {
           var _this = this;
-          this.$http.get("data/cartData.json", {"id": 123}).then(function(res) {
-            _this.productList = res.body.result.list;
+          this.$http.get("/static/data/cartData.json", {"id": 123}).then(function(res) {
+            console.log(res);
+            _this.productList = res.data.result.list;
             // _this.totalMoney =  res.body.result.totalMoney;
           });
         },
@@ -229,13 +231,9 @@
           this.delFlag = false;
         }
       }
-  });
-  // 全局过滤器
-  Vue.filter('money', function(value, type) {
-    return "¥" + value.toFixed(2) + type;
-  })
+  }
 </script>
-  <style scoped>
+<style scoped>
   h1, h2 {
     font-weight: normal;
   }
@@ -244,7 +242,8 @@
       padding: 5px 10px;
       text-align: center;
   }
-  <link href="/assets/css/base.css" rel="stylesheet">
-  <link href="/assets/css/checkout.css" rel="stylesheet">
-  <link href="/assets/css/modal.css" rel="stylesheet">
+
+  @import '../assets/css/base.css';
+  @import '../assets/css/checkout.css';
+  @import '../assets/css/modal.css';
 </style>

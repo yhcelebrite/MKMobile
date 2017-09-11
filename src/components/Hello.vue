@@ -52,6 +52,7 @@ export default {
     },
 
     postCors(){
+      debugger
       var config = {
         // `url` is the server URL that will be used for the request
         url: '/api/User/ReturnCheckCode',
@@ -132,7 +133,9 @@ export default {
         maxRedirects: 5, // default
 
       }
-      this.$http(config)
+      this.$http(config).then(function(res){
+        console.log(res);
+      })
     },
 
     postDataWithQS (){
@@ -148,6 +151,7 @@ export default {
       console.log()
       this.$http.get('http://172.18.10.189:5010/api/User/checkTel?tel=13631587454')
         .then(function (response) {
+          debugger
           console.log(response);
         })
         .catch(function (error) {
