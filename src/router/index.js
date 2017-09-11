@@ -6,6 +6,7 @@ import UserPosts from '@/components/UserPosts'
 import UserProfile from '@/components/UserProfile'
 import Cart from '@/components/Cart'
 import Address from '@/components/Address'
+import Index from '@/components/Index'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Index',
+      component: Index
+    },
+    {
+      path: '/hello',
       name: 'Hello',
       component: Hello
     },
