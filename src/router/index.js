@@ -8,6 +8,7 @@ import Cart from '@/components/Cart'
 import Address from '@/components/Address'
 import Index from '@/components/Index'
 import Login from '@/components/Login'
+import config from '@/assets/config/config'
 
 Vue.use(Router)
 
