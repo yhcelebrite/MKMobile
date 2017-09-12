@@ -1,3 +1,4 @@
+var PrerenderSpaPlugin = require('prerender-spa-plugin')
 var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')
@@ -92,7 +93,13 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    new PrerenderSpaPlugin(
+        // Absolute path to compiled SPA
+        path.join(__dirname, '../dist'),
+        // List of routes to prerender
+        [ '/', '/address', '/cart' ]
+    )
   ]
 })
 

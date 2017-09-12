@@ -116,7 +116,7 @@
                   Item total: <span class="total-price">{{totalMoney}}</span>
                 </div>
                 <div class="next-btn-wrap">
-                  <a href="/#/address" class="btn btn--red" style="width: 200px">结账</a>
+                  <a href="/address" class="btn btn--red" style="width: 200px">结账</a>
                 </div>
               </div>
             </div>
