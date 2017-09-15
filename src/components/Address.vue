@@ -1,5 +1,14 @@
 <template>
     <div class="address">
+
+      <mt-header title="直供平台">
+        <router-link to="/" slot="left">
+          <mt-button icon="back" @click="goBack">返回</mt-button>
+          <!--<mt-button @click="handleClose">關閉</mt-button>-->
+        </router-link>
+        <!--<mt-button icon="more" slot="right"></mt-button>-->
+      </mt-header>
+
       <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
           <symbol id="icon-add" viewBox="0 0 32 32">

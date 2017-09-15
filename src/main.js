@@ -9,6 +9,11 @@ import 'mint-ui/lib/style.css'
 
 Vue.use(MintUI)
 
+import { Swipe, SwipeItem } from 'mint-ui'
+
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false

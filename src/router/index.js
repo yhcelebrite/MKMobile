@@ -7,8 +7,10 @@ import UserProfile from '@/components/UserProfile'
 import Cart from '@/components/Cart'
 import Address from '@/components/Address'
 import Index from '@/components/Index'
-import Login from '@/components/Login'
+import LoginTest from '@/components/LoginTest'
 import config from '@/assets/config/config'
+import Login from '@/components/Login'
+import IndexTest from '@/components/IndexTest'
 
 Vue.use(Router)
 
@@ -19,6 +21,16 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index
+    },
+    {
+      path:'/indextest',
+      name:'IndexTest',
+      component:IndexTest
+    },
+    {
+      path:'/logintest',
+      name:'LoginTest',
+      component:LoginTest
     },
     {
       path:'/login',

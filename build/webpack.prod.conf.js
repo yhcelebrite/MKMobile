@@ -98,7 +98,35 @@ var webpackConfig = merge(baseWebpackConfig, {
         // Absolute path to compiled SPA
         path.join(__dirname, '../dist'),
         // List of routes to prerender
-        [ '/', '/address', '/cart' ]
+        [ '/', '/address', '/cart' ],
+        {
+          //captureAfterDocumentEvent: 'custom-post-render-event',
+          //captureAfterElementExists: '#content',
+          //captureAfterTime: 5000,
+          //ignoreJSErrors: true,
+          //indexPath: path.resolve('/dist/index.html'),
+          //maxAttempts: 10,
+          //navigationLocked: true,
+          //phantomOptions: '--disk-cache=true',
+          //phantomPageSettings: {
+          //  loadImages: true
+          //},
+          //phantomPageViewportSize: {
+          //  width: 1280,
+          //  height: 800
+          //},
+          postProcessHtml: function (context) {
+            var titles = {
+              '/': 'home',
+              '/address': 'contract address',
+              '/cart': 'shopping cart'
+            }
+            return context.html.replace(
+                /<title>[^<]*<\/title>/i,
+                '<title>' + titles[context.route] + '</title>'
+            )
+          }
+        }
     )
   ]
 })
